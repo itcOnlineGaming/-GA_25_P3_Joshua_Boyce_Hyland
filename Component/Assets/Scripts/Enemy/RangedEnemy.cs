@@ -6,9 +6,15 @@ public class RangedEnemy : Enemy
     public float inShootingRange = 2;
     public Transform shootingPoint;
     public GameObject bullet;
-    
 
-    private void FixedUpdate()
+    private int goldGainOnDeath = 80;
+
+    private void Start()
+    {
+        KillGoldGain = goldGainOnDeath;
+    }
+
+        private void FixedUpdate()
     {
         if (animationStat != AnimationState.Dead)
         {
@@ -17,7 +23,7 @@ public class RangedEnemy : Enemy
             {
                 if (target != null)
                 {
-                    checkToFindAnotherTarget();
+                    findClosestTarget();
 
                     if (!attacking)
                     {
