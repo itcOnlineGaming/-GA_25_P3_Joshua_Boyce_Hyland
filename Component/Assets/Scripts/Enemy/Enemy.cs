@@ -1,36 +1,32 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Analytics;
 
-
-public enum AnimationState { Idle, Walking, Attacking, Dead }
-
-
+public enum AnimationState { Idle, Walking, Attacking, Dead  }
 
 // Placeholder Enemy Class
 public class Enemy : MonoBehaviour
 {
-    public int damage = 10;   
-    public float speed = 1.25f;
+  
+    [HideInInspector] public int damage = 10;
+    [HideInInspector] public float speed = 1.25f;
     public GameObject planet;
-    public MovementStragtegy movementStragtegy;
-    public string targetTag;
+ 
+
     public AnimationState animationStat = AnimationState.Idle;
     //public Animator animator;
     public GameObject target;
 
 
     protected Rigidbody rb;
-    public static int MaxHealth = 5;
-    protected float health = MaxHealth;
-    public static int KillGoldGain = 100;
+    [HideInInspector]  protected float health = 15f;
 
     protected bool attacking = false;
     protected bool grounded = false;
+    protected int KillGoldGain;
+
 
     CapsuleCollider capsuleCollider;    
 
@@ -38,7 +34,6 @@ public class Enemy : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody>();
         capsuleCollider = gameObject.GetComponent<CapsuleCollider>();
-
     }
 
     private void Update()
@@ -47,6 +42,7 @@ public class Enemy : MonoBehaviour
         {
             // need to find different way as this will cause enemies to fall through planet
             //capsuleCollider.enabled = false;
+            //8
             //GameManager.Instance.UpdateEnemyKilled();
             //GameManager.Instance.UpdateCoinCount(KillGoldGain);
             animationStat = AnimationState.Dead;
@@ -58,90 +54,53 @@ public class Enemy : MonoBehaviour
     {
        if (attacking && target != null)
         {
-           
-           // target.GetComponent<targetType>().TakeDamage(damage);
+            //8
+            //target.GetComponent<Tower>().TakeDamage(damage);
         }
     }
 
-    protected void checkToFindAnotherTarget()
-    {
-        //if (target.GetComponent<Tower>().Attackers.Count > 5 && !target.GetComponent<Tower>().Attackers.Contains(this))
-        //{
-        //    Tower closestTower = null;
-        //    Tower[] possibleTargets = FindObjectsOfType<Tower>();
-
-
-        //    if (possibleTargets.Length > 0)
-        //    {
-        //        float closestDistance = Mathf.Infinity; // Start with a large number
-
-
-        //        foreach (Tower target in possibleTargets)
-        //        {
-
-        //            float distance = Vector3.Distance(transform.position, target.transform.position);
-
-        //            if ((target.GetComponent<Tower>().Attackers.Count < 5))
-        //            {
-        //                if (distance < closestDistance)
-        //                {
-        //                    closestTower = target;
-        //                    closestDistance = distance;
-        //                }
-        //            }
-
-        //        }
-        //    }
-
-        //    if (closestTower != null)
-        //    {
-        //        target = closestTower.gameObject;
-        //    }
-        //}
-    }
+ 
     protected void findClosestTarget()
     {
-        GameObject closestTower = null;
-        GameObject[] possibleTargets = GameObject.FindGameObjectsWithTag(targetTag);
+        //Tower closestTower = null;
+        //Tower[] possibleTargets = FindObjectsOfType<Tower>();
 
+        
+        //float closestDistance = Mathf.Infinity; // Start with a large number
+            
+        //foreach (Tower target in possibleTargets)
+        //{
+        //    if(!target.placed)
+        //    {
+        //        continue;
+        //    }
 
-        if (possibleTargets.Length > 0)
-        {
-            float closestDistance = Mathf.Infinity; // Start with a large number
+        //    float distance = Vector3.Distance(transform.position, target.transform.position);
 
-
-            foreach (GameObject target in possibleTargets)
-            {
-
-                float distance = Vector3.Distance(transform.position, target.transform.position);
-
-                if (distance < closestDistance)
-                {
-                    closestTower = target;
-                    closestDistance = distance;
-                }
-            }
-        }
-
-        if (closestTower != null)
-        {
-            target = closestTower.gameObject;
-        }
+        //    if( distance < closestDistance )
+        //    {
+        //        closestTower = target;
+        //        closestDistance = distance; 
+        //    }
+        //}
+        
+        
+        //if( closestTower != null )
+        //{
+        //    target = closestTower.gameObject;
+        //}
 
     }
 
     protected void MoveToTarget()
     {
 
+        Vector3 moveDirection = getPlanetRelativeTargetDirection(target.transform);
 
+        moveDirection += seperationForce();
 
-
-        Vector3 moveDirection = getSurfaceRelativeTargetDirection(target.transform);
-
-        //moveDirection += seperationForce();
-        ;
         Vector3 move = moveDirection * speed * Time.fixedDeltaTime;
-        rb.MovePosition(rb.position + movementStragtegy.moveTo(target.transform.position));
+        rb.MovePosition(rb.position + move);
 
         Vector3 directionFromCenter = (rb.position - planet.transform.position).normalized;
         rb.position = planet.transform.position + directionFromCenter * Vector3.Distance(rb.position, planet.transform.position);
@@ -170,7 +129,7 @@ public class Enemy : MonoBehaviour
         return separation.normalized * 0.5f;
     }
 
-    protected Vector3 getSurfaceRelativeTargetDirection(Transform target)
+    protected Vector3 getPlanetRelativeTargetDirection(Transform target)
     {
         Vector3 gravityDir = (transform.position - planet.transform.position).normalized;
 
@@ -196,7 +155,8 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.tag == "Projectile")
         {
-            //TakeDamage(other.GetComponent<Projectile>().damage);
+            //8
+           // TakeDamage(other.GetComponent<Projectile>().damage);
         }
     }
 }

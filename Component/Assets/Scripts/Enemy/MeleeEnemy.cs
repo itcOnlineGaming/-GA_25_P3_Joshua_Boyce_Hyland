@@ -2,20 +2,17 @@ using UnityEngine;
 
 public class MeleeEnemy :  Enemy
 {
-
-
-
-
     private void FixedUpdate()
     {
         if (animationStat != AnimationState.Dead)
         {
             // only move if we are grounded
-            //if (grounded)
-            //{
+            if (grounded)
+            {
                 if (target != null)
                 {
-                    checkToFindAnotherTarget();
+                    findClosestTarget();
+                    //checkToFindAnotherTarget();
 
                     if (!attacking)
                     {
@@ -30,12 +27,13 @@ public class MeleeEnemy :  Enemy
                 }
                 else
                 {
+                    attacking = false;
                     animationStat = AnimationState.Idle;
                     findClosestTarget();
                 }
 
 
-            //}
+            }
 
 
         }
@@ -46,7 +44,8 @@ public class MeleeEnemy :  Enemy
     {
         if (attacking && target != null)
         {
-            //target.GetComponent<Tower>().TakeDamage(damage);
+            //8
+           // target.GetComponent<Tower>().TakeDamage(damage);
         }
     }
 
