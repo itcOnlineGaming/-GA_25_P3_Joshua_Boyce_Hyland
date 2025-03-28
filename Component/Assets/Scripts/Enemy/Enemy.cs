@@ -23,8 +23,8 @@ public class Enemy : MonoBehaviour
     protected Rigidbody rb;
     [HideInInspector]  protected float health = 15f;
 
-    protected bool attacking = false;
-    protected bool grounded = false;
+    public bool attacking = false;
+    public bool grounded = false;
     protected int KillGoldGain;
 
 

@@ -21,8 +21,8 @@ public class Atmosphere : MonoBehaviour
 
     private void FixedUpdate()
     {
-
-       // gatherObjectsInAtmosphere();
+        gatherObjectsInAtmosphere();
+        // gatherObjectsInAtmosphere();
         foreach (GameObject obj in objectsOnPlanet)
         {
 
@@ -63,7 +63,7 @@ public class Atmosphere : MonoBehaviour
             {
                 if (!objectsOnPlanet.Contains(col.gameObject))
                 {
-                    if( col.gameObject.GetComponent<Enemy>() != null || col.gameObject.GetComponent<EnemyTargetable>() != null)
+                    if( col.gameObject.GetComponentInParent<AnimationManager>() != null || col.gameObject.GetComponent<EnemyTargetable>() != null)
                     {
                         objectsOnPlanet.Add(col.gameObject);
                     }
@@ -82,7 +82,7 @@ public class Atmosphere : MonoBehaviour
     {
         Vector3 gravityUp = (body.transform.position - transform.position).normalized;
 
-        body.GetComponent<Rigidbody>().AddForce(gravityUp * gravity); //apply gravity atop player
+        body.GetComponentInChildren<Rigidbody>().AddForce(gravityUp * gravity); //apply gravity atop player
     }
 
     public static void applyCorrectionRotation(GameObject body)

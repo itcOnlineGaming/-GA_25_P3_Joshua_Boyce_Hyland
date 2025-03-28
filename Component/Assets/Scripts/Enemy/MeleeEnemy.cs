@@ -51,36 +51,36 @@ public class MeleeEnemy :  Enemy
     }
 
 
-    protected void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.GetComponent<Atmosphere>() != null)
-        {
-            grounded = true;
-        }
+    //protected void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.GetComponent<Atmosphere>() != null)
+    //    {
+    //        grounded = true;
+    //    }
 
-        if (collision.gameObject.GetComponent<EnemyTargetable>() != null)
-        {
-            attacking = true;
-            animationStat = AnimationState.Attacking;
+    //    if (collision.gameObject.GetComponent<EnemyTargetable>() != null)
+    //    {
+    //        attacking = true;
+    //        animationStat = AnimationState.Attacking;
 
-            collision.gameObject.GetComponent<EnemyTargetable>().TakeDamage(10);
-        }
+    //        collision.gameObject.GetComponent<EnemyTargetable>().TakeDamage(10);
+    //    }
 
-    }
+    //}
 
 
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.GetComponent<Atmosphere>() != null)
-        {
-            grounded = false;
-        }
+    //private void OnCollisionExit(Collision collision)
+    //{
+    //    if (collision.gameObject.GetComponent<Atmosphere>() != null)
+    //    {
+    //        grounded = false;
+    //    }
 
-        if (collision.gameObject.GetComponent<EnemyTargetable>() != null)
-        {
+    //    if (collision.gameObject.GetComponent<EnemyTargetable>() != null)
+    //    {
 
-            attacking = false;
+    //        attacking = false;
 
-        }
-    }
+    //    }
+    //}
 }
