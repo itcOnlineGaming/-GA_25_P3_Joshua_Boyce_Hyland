@@ -649,6 +649,7 @@ GameObject:
   - component: {fileID: 714306940}
   - component: {fileID: 714306938}
   - component: {fileID: 714306944}
+  - component: {fileID: 714306945}
   m_Layer: 0
   m_Name: enemy
   m_TagString: Untagged
@@ -789,6 +790,19 @@ MonoBehaviour:
   planet: {fileID: 1183619285}
   animationStat: 0
   target: {fileID: 0}
+--- !u!114 &714306945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714306936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c560680832deb29499bf856fe0139d5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  model: {fileID: 919132149155446097, guid: 8e55fc80c4b3d114a9ba5fbe7dcf38a4, type: 3}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
