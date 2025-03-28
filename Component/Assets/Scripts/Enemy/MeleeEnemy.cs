@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MeleeEnemy :  Enemy
@@ -44,20 +45,20 @@ public class MeleeEnemy :  Enemy
     {
         if (attacking && target != null)
         {
-            //8
-           // target.GetComponent<Tower>().TakeDamage(damage);
+          
+           target.GetComponent<EnemyTargetable>().TakeDamage(damage);
         }
     }
 
 
     protected void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Triangle")
+        if (collision.gameObject.GetComponent<Atmosphere>() != null)
         {
             grounded = true;
         }
 
-        if (collision.gameObject.tag == "Tower")
+        if (collision.gameObject.GetComponent<EnemyTargetable>() != null)
         {
             attacking = true;
             animationStat = AnimationState.Attacking;
@@ -69,12 +70,12 @@ public class MeleeEnemy :  Enemy
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "Triangle")
+        if (collision.gameObject.GetComponent<Atmosphere>() != null)
         {
-            grounded = true;
+            grounded = false;
         }
 
-        if (collision.gameObject.tag == "Tower")
+        if (collision.gameObject.GetComponent<EnemyTargetable>() != null)
         {
 
             attacking = false;

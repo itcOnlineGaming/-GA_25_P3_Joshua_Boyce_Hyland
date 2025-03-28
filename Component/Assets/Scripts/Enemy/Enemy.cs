@@ -62,33 +62,33 @@ public class Enemy : MonoBehaviour
  
     protected void findClosestTarget()
     {
-        //Tower closestTower = null;
-        //Tower[] possibleTargets = FindObjectsOfType<Tower>();
+        EnemyTargetable closestTower = null;
+        EnemyTargetable[] possibleTargets = FindObjectsOfType<EnemyTargetable>();
 
-        
-        //float closestDistance = Mathf.Infinity; // Start with a large number
-            
-        //foreach (Tower target in possibleTargets)
-        //{
-        //    if(!target.placed)
-        //    {
-        //        continue;
-        //    }
 
-        //    float distance = Vector3.Distance(transform.position, target.transform.position);
+        float closestDistance = Mathf.Infinity; // Start with a large number
 
-        //    if( distance < closestDistance )
-        //    {
-        //        closestTower = target;
-        //        closestDistance = distance; 
-        //    }
-        //}
-        
-        
-        //if( closestTower != null )
-        //{
-        //    target = closestTower.gameObject;
-        //}
+        foreach (EnemyTargetable target in possibleTargets)
+        {
+            if (!target.attackable)
+            {
+                continue;
+            }
+
+            float distance = Vector3.Distance(transform.position, target.transform.position);
+
+            if (distance < closestDistance)
+            {
+                closestTower = target;
+                closestDistance = distance;
+            }
+        }
+
+
+        if (closestTower != null)
+        {
+            target = closestTower.gameObject;
+        }
 
     }
 
@@ -156,7 +156,7 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.tag == "Projectile")
         {
             //8
-           // TakeDamage(other.GetComponent<Projectile>().damage);
+           //TakeDamage(other.GetComponent<Projectile>().damage);
         }
     }
 }
