@@ -63,6 +63,7 @@ public class MeleeEnemy :  Enemy
             attacking = true;
             animationStat = AnimationState.Attacking;
 
+            collision.gameObject.GetComponent<EnemyTargetable>().TakeDamage(10);
         }
 
     }
