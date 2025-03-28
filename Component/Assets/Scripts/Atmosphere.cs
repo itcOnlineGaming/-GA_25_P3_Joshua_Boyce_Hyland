@@ -63,7 +63,7 @@ public class Atmosphere : MonoBehaviour
             {
                 if (!objectsOnPlanet.Contains(col.gameObject))
                 {
-                    if( col.gameObject.GetComponent<Enemy>() != null)
+                    if( col.gameObject.GetComponent<Enemy>() != null || col.gameObject.GetComponent<EnemyTargetable>() != null)
                     {
                         objectsOnPlanet.Add(col.gameObject);
                     }

@@ -1,16 +1,9 @@
 using UnityEngine;
 
-public class EnemyTargetable : MonoBehaviour
+public abstract class EnemyTargetable : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public bool attackable = true;
+   public abstract void TakeDamage(float t_damage);
 }
