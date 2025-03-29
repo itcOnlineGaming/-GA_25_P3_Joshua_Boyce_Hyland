@@ -26,14 +26,19 @@ public class Enemy : MonoBehaviour
     public bool attacking = false;
     public bool grounded = false;
     protected int KillGoldGain;
+    public AnimationManager animationManager;
 
-
-    CapsuleCollider capsuleCollider;    
+    private CapsuleCollider capsuleCollider;    
 
     private void Awake()
     {
-        rb = gameObject.GetComponent<Rigidbody>();
-        capsuleCollider = gameObject.GetComponent<CapsuleCollider>();
+        rb = gameObject.AddComponent<Rigidbody>();
+        rb.useGravity = false;
+        rb.freezeRotation = true;
+       
+
+        capsuleCollider = animationManager.createColliderBasedOnModel();
+
     }
 
     private void Update()
@@ -159,5 +164,9 @@ public class Enemy : MonoBehaviour
            //TakeDamage(other.GetComponent<Projectile>().damage);
         }
     }
+
+
+   
+  
 }
 

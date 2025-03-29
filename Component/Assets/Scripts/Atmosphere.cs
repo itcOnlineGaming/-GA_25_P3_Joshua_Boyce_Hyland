@@ -30,7 +30,8 @@ public class Atmosphere : MonoBehaviour
             {
               
                 applyGravity(obj);
-                applyCorrectionRotation(obj);
+
+                //applyCorrectionRotation(obj);
                 
             }
             
@@ -63,7 +64,7 @@ public class Atmosphere : MonoBehaviour
             {
                 if (!objectsOnPlanet.Contains(col.gameObject))
                 {
-                    if( col.gameObject.GetComponentInParent<AnimationManager>() != null || col.gameObject.GetComponent<EnemyTargetable>() != null)
+                    if( col.gameObject.GetComponent<Enemy>() != null || col.gameObject.GetComponent<EnemyTargetable>() != null)
                     {
                         objectsOnPlanet.Add(col.gameObject);
                     }
@@ -82,7 +83,10 @@ public class Atmosphere : MonoBehaviour
     {
         Vector3 gravityUp = (body.transform.position - transform.position).normalized;
 
-        body.GetComponentInChildren<Rigidbody>().AddForce(gravityUp * gravity); //apply gravity atop player
+        body.GetComponent<Rigidbody>().AddForce(gravityUp * gravity); //apply gravity atop player
+
+        Quaternion targetRotation = Quaternion.FromToRotation(body.transform.up, gravityUp) * body.transform.rotation;
+        body.transform.rotation = Quaternion.Slerp(body.transform.rotation, targetRotation, Time.deltaTime * 5f); // Smooth transition
     }
 
     public static void applyCorrectionRotation(GameObject body)
