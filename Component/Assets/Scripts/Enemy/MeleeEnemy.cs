@@ -5,7 +5,7 @@ public class MeleeEnemy : Enemy
 {
     private void FixedUpdate()
     {
-        if (animationStat != AnimationState.Dead)
+        if (animationManager.animationStat != AnimationState.Dead)
         {
             // only move if we are grounded
             if (grounded)
@@ -17,7 +17,7 @@ public class MeleeEnemy : Enemy
 
                     if (!attacking)
                     {
-                        animationStat = AnimationState.Walking;
+                        animationManager.animationStat = AnimationState.Walking;
                         MoveToTarget();
                     }
                     else
@@ -29,7 +29,7 @@ public class MeleeEnemy : Enemy
                 else
                 {
                     attacking = false;
-                    animationStat = AnimationState.Idle;
+                    animationManager.animationStat = AnimationState.Idle;
                     findClosestTarget();
                 }
 
@@ -38,7 +38,7 @@ public class MeleeEnemy : Enemy
 
 
         }
-        //animator.SetInteger("State", (int)animationStat);
+        animationManager.animator.SetInteger("State", (int)animationManager.animationStat);
     }
 
     public override void attackTarget()
@@ -60,7 +60,7 @@ public class MeleeEnemy : Enemy
         if (collision.gameObject.GetComponent<EnemyTargetable>() != null)
         {
             attacking = true;
-            animationStat = AnimationState.Attacking;
+            animationManager.animationStat = AnimationState.Attacking;
 
             collision.gameObject.GetComponent<EnemyTargetable>().TakeDamage(10);
         }

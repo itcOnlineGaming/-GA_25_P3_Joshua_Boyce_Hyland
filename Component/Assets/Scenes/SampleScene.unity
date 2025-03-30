@@ -206,7 +206,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0.95, y: 82.24, z: -275}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -661,12 +661,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 714306936}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.95, y: 83.47, z: -244.34}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.020658208, y: 0.51739997, z: -0.044400025}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1183619289}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &714306944
 MonoBehaviour:
@@ -683,10 +683,10 @@ MonoBehaviour:
   damage: 10
   speed: 1.25
   planet: {fileID: 1183619285}
-  animationStat: 0
   target: {fileID: 0}
   attacking: 0
   grounded: 0
+  animationManager: {fileID: 714306945}
 --- !u!114 &714306945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -700,8 +700,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   model: {fileID: 919132149155446097, guid: 8e55fc80c4b3d114a9ba5fbe7dcf38a4, type: 3}
-  collider: {fileID: 0}
-  enemy: {fileID: 714306944}
+  controller: {fileID: 9100000, guid: c08e1998fdf66b74a9771cf124b3d25f, type: 2}
+  animator: {fileID: 0}
+  animationStat: 0
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,7 +858,8 @@ Transform:
   m_LocalPosition: {x: -1.115821, y: 30.5, z: -239.9}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 714306943}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1183619290
@@ -1025,6 +1027,5 @@ SceneRoots:
   - {fileID: 832575519}
   - {fileID: 1347814234}
   - {fileID: 607893400}
-  - {fileID: 714306943}
   - {fileID: 1183619289}
   - {fileID: 706289511}

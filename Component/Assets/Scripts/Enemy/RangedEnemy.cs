@@ -16,7 +16,7 @@ public class RangedEnemy : Enemy
 
         private void FixedUpdate()
     {
-        if (animationStat != AnimationState.Dead)
+        if (animationManager.animationStat != AnimationState.Dead)
         {
             // only move if we are grounded
             if (grounded)
@@ -27,7 +27,7 @@ public class RangedEnemy : Enemy
 
                     if (!attacking)
                     {
-                        animationStat = AnimationState.Walking;
+                        animationManager.animationStat = AnimationState.Walking;
                         MoveToTarget();
                        //shootingRangeCheck();
                     }
@@ -39,7 +39,7 @@ public class RangedEnemy : Enemy
                 }
                 else
                 {
-                    animationStat = AnimationState.Idle;
+                    animationManager.animationStat = AnimationState.Idle;
                     findClosestTarget();
                 }
 
@@ -48,7 +48,7 @@ public class RangedEnemy : Enemy
 
 
         }
-        //animator.SetInteger("State", (int)animationStat);
+        animationManager.animator.SetInteger("State", (int)animationManager.animationStat);
     }
     private void shootingRangeCheck()
     {
@@ -57,7 +57,7 @@ public class RangedEnemy : Enemy
         if ( distance < inShootingRange)
         {
             attacking = true;
-            animationStat = AnimationState.Attacking;
+            animationManager.animationStat = AnimationState.Attacking;
 
         }
     }
@@ -82,7 +82,7 @@ public class RangedEnemy : Enemy
         if (collision.gameObject.tag == "Tower")
         {
             attacking = true;
-            animationStat = AnimationState.Attacking;
+            animationManager.animationStat = AnimationState.Attacking;
 
         }
 

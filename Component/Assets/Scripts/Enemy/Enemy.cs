@@ -4,7 +4,7 @@ using System.Drawing;
 using UnityEngine;
 using UnityEngine.Analytics;
 
-public enum AnimationState { Idle, Walking, Attacking, Dead  }
+
 
 // Placeholder Enemy Class
 public class Enemy : MonoBehaviour
@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     public GameObject planet;
  
 
-    public AnimationState animationStat = AnimationState.Idle;
+    
     //public Animator animator;
     public GameObject target;
 
@@ -43,14 +43,14 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (health <= 0 && animationStat != AnimationState.Dead)
+        if (health <= 0 && animationManager.animationStat != AnimationState.Dead)
         {
             // need to find different way as this will cause enemies to fall through planet
             //capsuleCollider.enabled = false;
             //8
             //GameManager.Instance.UpdateEnemyKilled();
             //GameManager.Instance.UpdateCoinCount(KillGoldGain);
-            animationStat = AnimationState.Dead;
+            animationManager.animationStat = AnimationState.Dead;
 
         }
     }
