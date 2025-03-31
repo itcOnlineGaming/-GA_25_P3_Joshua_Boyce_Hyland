@@ -17,9 +17,13 @@ public class AnimationManager : MonoBehaviour
 
     private void Awake()
     {
-        animator = gameObject.AddComponent<Animator>();
-        animator.enabled = true;
-        animator.runtimeAnimatorController = controller;
+        //animator = gameObject.GetComponent<Animator>();
+        //if (animator == null)
+        //{
+        //    animator = gameObject.AddComponent<Animator>();
+        //}
+        //animator.enabled = true;
+        //animator.runtimeAnimatorController = controller;
     }
 
     void Start()
