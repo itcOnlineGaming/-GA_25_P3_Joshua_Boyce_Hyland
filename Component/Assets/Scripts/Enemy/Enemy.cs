@@ -9,7 +9,8 @@ using UnityEngine.Analytics;
 // Placeholder Enemy Class
 public class Enemy : MonoBehaviour
 {
-  
+
+    public float attackRange = 0.8f;
     [HideInInspector] public int damage = 10;
     [HideInInspector] public float speed = 1.25f;
     public GameObject planet;
@@ -22,9 +23,8 @@ public class Enemy : MonoBehaviour
 
     protected Rigidbody rb;
     [HideInInspector]  protected float health = 15f;
-
-    public bool attacking = false;
-    public bool grounded = false;
+    [HideInInspector] public bool attacking = false;
+    [HideInInspector] public bool grounded = false;
     protected int KillGoldGain;
     public AnimationManager animationManager;
 
@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour
        
 
         capsuleCollider = animationManager.createColliderBasedOnModel();
-
+        
     }
 
     private void Update()
@@ -57,10 +57,9 @@ public class Enemy : MonoBehaviour
 
     public virtual void attackTarget()
     {
-       if (attacking && target != null)
+        if (attacking && target != null)
         {
-            //8
-            //target.GetComponent<Tower>().TakeDamage(damage);
+            target.GetComponent<EnemyTargetable>().TakeDamage(damage);
         }
     }
 

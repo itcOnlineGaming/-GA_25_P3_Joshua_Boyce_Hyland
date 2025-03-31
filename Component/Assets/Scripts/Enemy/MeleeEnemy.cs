@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class MeleeEnemy : Enemy
 {
+
+
     private void FixedUpdate()
     {
         if (animationManager.animationStat != AnimationState.Dead)
@@ -15,6 +17,12 @@ public class MeleeEnemy : Enemy
                     findClosestTarget();
                     //checkToFindAnotherTarget();
 
+
+                    if( IsTargetInAttackRange())
+                    {
+                        attacking = true;
+                        animationManager.animationStat = AnimationState.Attacking;
+                    }
                     if (!attacking)
                     {
                         animationManager.animationStat = AnimationState.Walking;
@@ -49,6 +57,23 @@ public class MeleeEnemy : Enemy
             target.GetComponent<EnemyTargetable>().TakeDamage(damage);
         }
     }
+    public bool IsTargetInAttackRange()
+    {
+        if (target == null) return false;
+
+        // Get character and target bounds
+        float characterSize = gameObject.GetComponentInChildren<Renderer>().bounds.extents.magnitude;
+        float targetSize = target.GetComponent<Renderer>().bounds.extents.magnitude;
+
+        // Calculate dynamic attack range
+        float attackRange = (characterSize + targetSize) * 0.8f;
+
+        // Get distance to target
+        float distance = Vector3.Distance(transform.position, target.transform.position);
+
+        // Check if within range
+        return distance <= attackRange;
+    }
 
     protected void OnCollisionEnter(Collision collision)
     {
@@ -57,13 +82,13 @@ public class MeleeEnemy : Enemy
             grounded = true;
         }
 
-        if (collision.gameObject.GetComponent<EnemyTargetable>() != null)
-        {
-            attacking = true;
-            animationManager.animationStat = AnimationState.Attacking;
+        //if (collision.gameObject.GetComponent<EnemyTargetable>() != null)
+        //{
+        //    attacking = true;
+        //    animationManager.animationStat = AnimationState.Attacking;
 
-            collision.gameObject.GetComponent<EnemyTargetable>().TakeDamage(10);
-        }
+        //   // collision.gameObject.GetComponent<EnemyTargetable>().TakeDamage(10);
+        //}
 
     }
 

@@ -11,33 +11,11 @@ public class AnimationManager : MonoBehaviour
     public GameObject model;
     public RuntimeAnimatorController controller;
 
-    [HideInInspector] GameObject instantiatedModel;
+    [HideInInspector] public GameObject instantiatedModel;
     [HideInInspector] public Animator animator;
     [HideInInspector] public AnimationState animationStat = AnimationState.Idle;
 
-    private void Awake()
-    {
-        //animator = gameObject.GetComponent<Animator>();
-        //if (animator == null)
-        //{
-        //    animator = gameObject.AddComponent<Animator>();
-        //}
-        //animator.enabled = true;
-        //animator.runtimeAnimatorController = controller;
-    }
-
-    void Start()
-    {
-        
-      
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+   
     public CapsuleCollider createColliderBasedOnModel()
     {
         instantiatedModel = Instantiate(model, transform);

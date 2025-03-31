@@ -4,7 +4,7 @@ public class mediumEnemy : MeleeEnemy
 {
 
     public static int maxDamage = 10;
-    public static float maxSpeed = 2f;
+    public static float maxSpeed = 5f;
     public static float maxHealth = 50f;
     private int goldGainOnDeath = 25;
 
@@ -15,6 +15,6 @@ public class mediumEnemy : MeleeEnemy
         health = maxHealth;
         KillGoldGain = goldGainOnDeath;
 
-       // animator.SetFloat("SpeedMultiplier", maxSpeed);
+        animationManager.animator.SetFloat("SpeedMultiplier", maxSpeed);
     }
 }
