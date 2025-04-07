@@ -3,7 +3,7 @@ using UnityEngine;
 public class ExampleEnemy : EnemyTargetable
 {
 
-    float health = 1;
+    
 
     public override void TakeDamage(float t_damage)
     {

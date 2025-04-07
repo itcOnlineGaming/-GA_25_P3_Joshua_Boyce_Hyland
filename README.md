@@ -8,6 +8,8 @@ Here you will see how to use the Enemy system package
 1. [Set-Up](#set-up)
 2. [Enviorment](#enviorement)
 3. [Enemy](#enemy)
+4. [Enemy Targetable](#enemy-targetable)
+5. [Customization](#customization)
 
 
 ---
@@ -44,9 +46,7 @@ Here you can choose to create the enviorment the character will be walking on, w
 4. assign the enemys animation manager
 
 ### Animation:
-
-
-5. Create a animation script which will implement an attack and a death function using the enemies relative functions<br>
+1. Create a animation script which will implement an attack and a death function using the enemies relative functions<br>
 
 <pre> ```cshar public class AnimationScriptExample : MonoBehaviour
 {
@@ -75,12 +75,33 @@ Here you can choose to create the enviorment the character will be walking on, w
         Destroy(enemy.gameObject);
  }}``` </pre>
 
-6. Assign these functions to animations events in your choosen animations  <br>
+2. Assign these functions to animations events in your choosen animations  <br>
 <img src="gifs/animation.png" width="600" alt="Demo GIF"/>
 
-7. Make a copy of the default controller at "Packages/Enemey/Runtime/Animation/ Default Controller" assign the animations<br>
+3. Make a copy of the default controller at "Packages/Enemey/Runtime/Animation/ Default Controller" assign the animations<br>
 <img src="gifs/animationcontroller.png" width="600" alt="Demo GIF"/>
 8. Assign this controller to the animation manager and yoru character is fully animated .<br>
 
+## Enemy Targetable
+
+1. Attach Script and set variable to make the object targetable by the enemy.
+2. Set Health and whether the target is currently attackable.
+
+<img src="gifs/enemy_targetable.PNG" width="600" alt="Demo GIF"/>
+## Customization
+
+### Enemey Scripts:
+- **Attack Range:** Customize the attack range of the enemy, the distance an enemy will attack enemies.
+- **Max Damage:** Attack damage of the enemy.
+- **Max Speed:** Movement speed of enemy.
+- **Max Health:** Health of enemy.
+- **Animation Speed Scaler** float which scales the speed of the animation relative to the **Max Speed**.
+<img src="gifs/enemyScript.PNG" width="600" alt="Demo GIF"/>
+
+### Animation
+- **Model**: The model which will be used for the enemy.
+- **Capsule Offset**: Offsets the capsule on y axis if adjustment needs to be made.
+- **Controller**: Use copy of default_animation controller to use your own animations with your own custom events.
+<img src="gifs/animation_controller.PNG" width="600" alt="Demo GIF"/>
 
 
