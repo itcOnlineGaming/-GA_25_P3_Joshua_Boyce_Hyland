@@ -25,13 +25,13 @@ You need to add this component to your Packages/manifest file
 
 Here you can choose to create the enviorment the character will be walking on, with a choice of a sphere or some sort of plane : .
 
-### Use
+#### Use
 
-#### Sphere enviorement set up
+##### Sphere enviorement set up
 
 1. Add the `Atmosphere` script to your sphere world.
 2. Adjust the radius to be bigger than the world. As an acutally atmosphere would. <br>
-<img src="gif/atmosphere.gif" width="600" alt="Demo GIF"/>
+<img src="gifs/atmosphere.gif" width="600" alt="Demo GIF"/>
 
 
 
