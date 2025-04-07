@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 public class Atmosphere : MonoBehaviour
 {
-    public float gravity = -3;
+    [HideInInspector] public float gravity = -3;
     public float radius = 3;
     private LineRenderer lineRenderer;
     List<GameObject> objectsOnPlanet = new List<GameObject>();
