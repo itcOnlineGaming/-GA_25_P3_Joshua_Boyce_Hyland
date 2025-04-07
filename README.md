@@ -41,12 +41,13 @@ Here you can choose to create the enviorment the character will be walking on, w
 
 Here you can see how to create an enemy.
 
-1. Attack an enemy script to an empty game object
-2. Assign the planet of the enemy scriipt
-3. Give the Gameobject an animation Manager 
-4. Assign this to the enemy Manager
-5. Create a animation script which will implement an attack and a death function 
-6. Assign these functions as animation events for your chosen animation.
-7. Assigne these animattion in the default animation controller
-8. Assign this controller to the animation manager.
+1. Attack an enemy script to an empty game object <br>
+   <img src="gifs/1.gif" width="600" alt="Demo GIF"/>
+3. Assign the planet of the enemy scriipt
+4. Give the Gameobject an animation Manager 
+5. Assign this to the enemy Manager
+6. Create a animation script which will implement an attack and a death function 
+7. Assign these functions as animation events for your chosen animation.
+8. Assigne these animattion in the default animation controller
+9. Assign this controller to the animation manager.
 
