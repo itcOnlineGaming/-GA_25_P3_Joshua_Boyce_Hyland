@@ -25,9 +25,9 @@ You need to add this component to your Packages/manifest file
 
 Here you can choose to create the enviorment the character will be walking on, with a choice of a sphere or some sort of plane : .
 
-### Use
+#### Use
 
-#### Sphere enviorement set up
+##### Sphere enviorement set up
 
 1. Add the `Atmosphere` script to your sphere world.
 2. Adjust the radius to be bigger than the world. <br>
@@ -37,24 +37,50 @@ Here you can choose to create the enviorment the character will be walking on, w
 
 ## Enemy
 
-### Overview:
+### Scripts:
+1. Create an empty Game object and attack a Enemy script to it <br>
+2. Assign the Enemy the planet it will be traversing <br>
+3. Give the enemy gameobject an animation Manager <br>
+4. assign the enemys animation manager
 
-Here you can see how to create an enemy.
+#### Animation
 
-1. Attack an enemy script to an empty game object <br>
-   <img src="gifs/1.gif" width="600" alt="Demo GIF"/>
-3. Assign the planet of the enemy scriipt <br>
-   <img src="gifs/2.gif" width="600" alt="Demo GIF"/>
-5. Give the Gameobject an animation Manager <br>
-   <img src="gifs/3.gif" width="600" alt="Demo GIF"/> 
-7. Assign this to the enemy  <br>
-   <img src="gifs/4.gif" width="600" alt="Demo GIF"/>
-9. Create a animation script which will implement an attack and a death function <br>
-    <img src="gifs/5.gif" width="600" alt="Demo GIF"/>
-11. Assign these functions as animation events for your chosen animation. <br>
-    <img src="gifs/6.gif" width="600" alt="Demo GIF"/>
-13. Assigne these animattion in the default animation controller <br>
-    <img src="gifs/7.gif" width="600" alt="Demo GIF"/>
-15. Assign this controller to the animation manager. <br>
-    <img src="gifs/8.gif" width="600" alt="Demo GIF"/>
+
+5. Create a animation script which will implement an attack and a death function using the enemies relative functions<br>
+
+<pre> ```cshar public class AnimationScriptExample : MonoBehaviour
+{
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+
+    public Enemy enemy;
+
+
+    private void Start()
+    {
+        
+        AnimationScriptExample example = enemy.animationManager.instantiatedModel.AddComponent<AnimationScriptExample>();
+
+        example.enabled = true;
+        example.enemy = enemy;  
+    }
+    void attack()
+    {
+        enemy.attackTarget();
+    }
+
+
+    void death()
+    {
+        Destroy(enemy.gameObject);
+ }}``` </pre>
+
+6. Assign these functions to animations events in your choosen animations  <br>
+<img src="gifs/animation.png" width="600" alt="Demo GIF"/>
+
+7. Make a copy of the default controller at "Packages/Enemey/Runtime/Animation/ Default Controller" assign the animations<br>
+<img src="gifs/animationcontroller.png" width="600" alt="Demo GIF"/>
+8. Assign this controller to the animation manager and yoru character is fully animated .<br>
+
+
 
