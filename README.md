@@ -43,7 +43,7 @@ Here you can choose to create the enviorment the character will be walking on, w
 3. Give the enemy gameobject an animation Manager <br>
 4. assign the enemys animation manager
 
-### Animation
+### Animation:
 
 
 5. Create a animation script which will implement an attack and a death function using the enemies relative functions<br>
