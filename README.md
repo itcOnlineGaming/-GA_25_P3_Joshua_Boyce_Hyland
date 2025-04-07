@@ -30,7 +30,9 @@ Here you can choose to create the enviorment the character will be walking on, w
 #### Sphere enviorement set up
 
 1. Add the `Atmosphere` script to your sphere world.
-2. Adjust the radius to be bigger than the world:
+2. Adjust the radius to be bigger than the world. <br>
+<img src="gif/atmosphere.gif" width="600" alt="Demo GIF"/>
+
 
 
 ## Enemy
