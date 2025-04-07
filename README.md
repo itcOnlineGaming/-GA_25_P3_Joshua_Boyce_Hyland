@@ -42,23 +42,23 @@ Here you can choose to create the enviorment the character will be walking on, w
 Here you can see how to create an enemy.
 
 1. Attack an enemy script to an empty game object <br>
-<img src="gif/1.gif" width="600" alt="Demo GIF"/>
+<img src="gifs/1.gif" width="600" alt="Demo GIF"/>
 2. Assign the planet of the enemy scriipt <br>
-<img src="gif/2.gif" width="600" alt="Demo GIF"/>
+<img src="gifs/2.gif" width="600" alt="Demo GIF"/>
 3. Give the Gameobject an animation Manager <br>
-<img src="gif/3.gif" width="600" alt="Demo GIF"/>
+<img src="gifs/3.gif" width="600" alt="Demo GIF"/>
 4. Assign this to the enemy Manager<br>
-<img src="gif/4.gif" width="600" alt="Demo GIF"/>
+<img src="gifs/4.gif" width="600" alt="Demo GIF"/>
 5. Create a animation script which will implement an attack and a death function <br>
-<img src="gif/5.gif" width="600" alt="Demo GIF"/>
+<img src="gifs/5.gif" width="600" alt="Demo GIF"/>
 6. Assign these functions as animation events for your chosen animation.<br>
 <img src="gif/6.gif" width="600" alt="Demo GIF"/>
 7. Assigne these animattion in the default animation controller<br>
-<img src="gif/7.gif" width="600" alt="Demo GIF"/>
+<img src="gifs/7.gif" width="600" alt="Demo GIF"/>
 8. Assign this controller to the animation manager.<br>
-<img src="gif/8.gif" width="600" alt="Demo GIF"/>
+<img src="gifs/8.gif" width="600" alt="Demo GIF"/>
 
 <br>
-<img src="gif/9.gif" width="600" alt="Demo GIF"/>
+<img src="gifs/9.gif" width="600" alt="Demo GIF"/>
 
 
