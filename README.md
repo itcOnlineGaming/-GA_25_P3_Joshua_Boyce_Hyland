@@ -88,6 +88,7 @@ Here you can choose to create the enviorment the character will be walking on, w
 2. Set Health and whether the target is currently attackable.
 
 <img src="gifs/enemy_targetable.PNG" width="600" alt="Demo GIF"/>
+
 ## Customization
 
 ### Enemey Scripts:
