@@ -12,7 +12,7 @@ Here you will see how to use the Enemy system package
 
 ---
 
-## Set Up
+## Set Up:
 You need to add this component to your Packages/manifest file
 
     "ie.setu.enemy": "https://github.com/itcOnlineGaming/-GA_25_P3_Joshua_Boyce_Hyland.git?path=/Enemy/Packages/ie.setu.enemy"
@@ -21,13 +21,13 @@ You need to add this component to your Packages/manifest file
 
 ## Enviorment
 
-### Overview
+### Overview:
 
 Here you can choose to create the enviorment the character will be walking on, with a choice of a sphere or some sort of plane : .
 
-#### Use
 
-##### Sphere enviorement set up
+
+#### Sphere enviorement set up
 
 1. Add the `Atmosphere` script to your sphere world.
 2. Adjust the radius to be bigger than the world. <br>
@@ -43,7 +43,7 @@ Here you can choose to create the enviorment the character will be walking on, w
 3. Give the enemy gameobject an animation Manager <br>
 4. assign the enemys animation manager
 
-#### Animation
+### Animation
 
 
 5. Create a animation script which will implement an attack and a death function using the enemies relative functions<br>
