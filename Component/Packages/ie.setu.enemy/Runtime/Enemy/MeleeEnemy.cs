@@ -66,7 +66,7 @@ public class MeleeEnemy : Enemy
         float targetSize = target.GetComponent<Renderer>().bounds.extents.magnitude;
 
         // Calculate dynamic attack range
-        float attackRange = (characterSize + targetSize) * 0.8f;
+        float attackRange = (characterSize + targetSize) * attackingRange;
 
         // Get distance to target
         float distance = Vector3.Distance(transform.position, target.transform.position);
@@ -82,22 +82,12 @@ public class MeleeEnemy : Enemy
             grounded = true;
         }
 
-        //if (collision.gameObject.GetComponent<EnemyTargetable>() != null)
-        //{
-        //    attacking = true;
-        //    animationManager.animationStat = AnimationState.Attacking;
-
-        //   // collision.gameObject.GetComponent<EnemyTargetable>().TakeDamage(10);
-        //}
-
+       
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "Surface")
-        {
-            grounded = true;
-        }
+     
 
         if (collision.gameObject.GetComponent<EnemyTargetable>() != null)
         {

@@ -10,7 +10,7 @@ using UnityEngine.Analytics;
 public class Enemy : MonoBehaviour
 {
 
-    public float attackRange = 0.8f;
+    public float attackingRange = 0.8f;
     public int damage = 10;
     public float speed = 1.25f;
     
