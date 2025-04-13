@@ -276,7 +276,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &400049270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -401,7 +401,7 @@ Transform:
   m_GameObject: {fileID: 400049269}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 41.51, y: 65.62, z: -217.85}
+  m_LocalPosition: {x: 28.3, y: 65.62, z: -249.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -547,7 +547,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &607893397
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -671,7 +671,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &706289508
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -821,7 +821,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &714306943
 Transform:
   m_ObjectHideFlags: 0
@@ -852,16 +852,21 @@ MonoBehaviour:
   attackRange: 0.8
   damage: 10
   speed: 1.25
+  animationSpeedScaler: 0.5
   planet: {fileID: 1183619285}
   traversal: {fileID: 714306947}
   target: {fileID: 0}
+  rb: {fileID: 0}
+  health: 15
   attacking: 0
   grounded: 0
+  KillGoldGain: 0
   animationManager: {fileID: 714306945}
+  capsuleCollider: {fileID: 0}
   maxDamage: 15
   maxSpeed: 5
   maxHealth: 35
-  animationSpeedScaler: 0.5
+  goldGainOnDeath: 150
 --- !u!114 &714306945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -976,7 +981,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!135 &1183619286
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -996,7 +1001,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 0.499
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1183619287
 MeshRenderer:
@@ -1060,7 +1065,7 @@ Transform:
   m_GameObject: {fileID: 1183619285}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.6, y: 3.02, z: 20.4}
+  m_LocalPosition: {x: -22.6, y: 72.5, z: -230.8}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1101,7 +1106,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &1347814231
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1233,9 +1238,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1780270461}
-  - component: {fileID: 1780270464}
+  - component: {fileID: 1780270466}
   - component: {fileID: 1780270463}
   - component: {fileID: 1780270462}
+  - component: {fileID: 1780270465}
   m_Layer: 0
   m_Name: enemy (2)
   m_TagString: Untagged
@@ -1270,7 +1276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ea5827c87b496a45b9cca1009c98e37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 1780270464}
+  enemy: {fileID: 1780270466}
 --- !u!114 &1780270463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1289,7 +1295,7 @@ MonoBehaviour:
   instantiatedModel: {fileID: 0}
   animator: {fileID: 0}
   animationStat: 0
---- !u!114 &1780270464
+--- !u!114 &1780270465
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1298,22 +1304,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 1780270460}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f807bc93ac2e48418917c22b1ebacb6, type: 3}
+  m_Script: {fileID: 11500000, guid: df146876ac327e04a9dd33ff655d4cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  enemy: {fileID: 0}
+  planet: {fileID: 1183619285}
+  rb: {fileID: 0}
+--- !u!114 &1780270466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780270460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3106e9d7caae52846b4d4f5d3d3c897c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 0.8
   damage: 10
-  speed: 1.25
+  speed: 4
+  animationSpeedScaler: 0.5
   planet: {fileID: 1183619285}
-  traversal: {fileID: 0}
+  traversal: {fileID: 1780270465}
   target: {fileID: 0}
   attacking: 0
   grounded: 0
   animationManager: {fileID: 1780270463}
-  maxDamage: 15
-  maxSpeed: 5
-  maxHealth: 35
-  animationSpeedScaler: 0.5
 --- !u!1 &1811690924
 GameObject:
   m_ObjectHideFlags: 0
@@ -1323,9 +1342,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1811690925}
-  - component: {fileID: 1811690928}
+  - component: {fileID: 1811690930}
   - component: {fileID: 1811690927}
   - component: {fileID: 1811690926}
+  - component: {fileID: 1811690929}
   m_Layer: 0
   m_Name: enemy (1)
   m_TagString: Untagged
@@ -1360,7 +1380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ea5827c87b496a45b9cca1009c98e37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 1811690928}
+  enemy: {fileID: 1811690930}
 --- !u!114 &1811690927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1379,7 +1399,7 @@ MonoBehaviour:
   instantiatedModel: {fileID: 0}
   animator: {fileID: 0}
   animationStat: 0
---- !u!114 &1811690928
+--- !u!114 &1811690929
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1388,22 +1408,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 1811690924}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f807bc93ac2e48418917c22b1ebacb6, type: 3}
+  m_Script: {fileID: 11500000, guid: df146876ac327e04a9dd33ff655d4cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  enemy: {fileID: 1811690930}
+  planet: {fileID: 1183619285}
+  rb: {fileID: 0}
+--- !u!114 &1811690930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811690924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3106e9d7caae52846b4d4f5d3d3c897c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 0.8
   damage: 10
-  speed: 1.25
+  speed: 5
+  animationSpeedScaler: 0.25
   planet: {fileID: 1183619285}
-  traversal: {fileID: 0}
+  traversal: {fileID: 1811690929}
   target: {fileID: 0}
   attacking: 0
   grounded: 0
   animationManager: {fileID: 1811690927}
-  maxDamage: 15
-  maxSpeed: 5
-  maxHealth: 35
-  animationSpeedScaler: 0.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
