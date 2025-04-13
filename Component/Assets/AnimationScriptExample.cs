@@ -11,10 +11,15 @@ public class AnimationScriptExample : MonoBehaviour
     private void Start()
     {
         
-        AnimationScriptExample example = enemy.animationManager.instantiatedModel.AddComponent<AnimationScriptExample>();
+        AnimationScriptExample example = enemy.animationManager.instantiatedModel.GetComponent<AnimationScriptExample>();
 
-        example.enabled = true;
-        example.enemy = enemy;  
+        if( example == null )
+        {
+            example = enemy.animationManager.instantiatedModel.AddComponent<AnimationScriptExample>();
+            example.enabled = true;
+            example.enemy = enemy;
+        }
+        
     }
     void attack()
     {

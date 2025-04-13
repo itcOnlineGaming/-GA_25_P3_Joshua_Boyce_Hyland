@@ -11,6 +11,8 @@ public class PlaneTraversal : Traversal
         agent = gameObject.AddComponent<NavMeshAgent>();
         agent.updatePosition = false;
         agent.updateRotation = false;
+
+        enemy.grounded = true;
     }
 
     private void Awake()
