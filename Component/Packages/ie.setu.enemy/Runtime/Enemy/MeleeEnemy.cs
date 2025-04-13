@@ -77,7 +77,7 @@ public class MeleeEnemy : Enemy
 
     protected void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Planet")
+        if (collision.gameObject.tag == "Surface")
         {
             grounded = true;
         }
@@ -94,7 +94,7 @@ public class MeleeEnemy : Enemy
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "Planet")
+        if (collision.gameObject.tag == "Surface")
         {
             grounded = true;
         }
