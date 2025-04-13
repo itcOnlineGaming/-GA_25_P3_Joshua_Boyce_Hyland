@@ -4,8 +4,8 @@ using UnityEngine.AI;
 public class PlaneTraversal : Traversal
 {
     private NavMeshAgent agent;
-    public bool canMove = true; // External control flag
-
+    public bool canMove = true; 
+    
     void Start()
     {
         agent = gameObject.AddComponent<NavMeshAgent>();
