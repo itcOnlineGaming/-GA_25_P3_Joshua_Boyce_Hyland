@@ -11,6 +11,7 @@ public class AnimationManager : MonoBehaviour
     public GameObject model;
     public float capsuleOffset = 0.1f;
     public RuntimeAnimatorController controller;
+  
 
     [HideInInspector] public GameObject instantiatedModel;
     [HideInInspector] public Animator animator;
@@ -46,6 +47,8 @@ public class AnimationManager : MonoBehaviour
         animator = instantiatedModel.AddComponent<Animator>();
         animator.enabled = true;
         animator.runtimeAnimatorController = controller;
+
+
 
         return collider;
     }

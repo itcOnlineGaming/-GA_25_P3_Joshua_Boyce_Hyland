@@ -14,9 +14,10 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public int damage = 10;
     [HideInInspector] public float speed = 1.25f;
     public GameObject planet;
- 
 
-    
+
+    public Traversal traversal;
+
     //public Animator animator;
     public GameObject target;
 
@@ -36,6 +37,8 @@ public class Enemy : MonoBehaviour
         rb.useGravity = false;
         rb.freezeRotation = true;
        
+
+      
 
         capsuleCollider = animationManager.createColliderBasedOnModel();
         

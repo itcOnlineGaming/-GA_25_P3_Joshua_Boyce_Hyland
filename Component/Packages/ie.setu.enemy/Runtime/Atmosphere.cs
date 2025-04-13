@@ -22,6 +22,8 @@ public class Atmosphere : MonoBehaviour
     private void FixedUpdate()
     {
         gatherObjectsInAtmosphere();
+        objectsOnPlanet.RemoveAll(objects => objects == null);
+
         // gatherObjectsInAtmosphere();
         foreach (GameObject obj in objectsOnPlanet)
         {

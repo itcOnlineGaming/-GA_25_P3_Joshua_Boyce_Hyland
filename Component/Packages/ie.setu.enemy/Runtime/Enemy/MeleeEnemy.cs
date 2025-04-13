@@ -26,7 +26,7 @@ public class MeleeEnemy : Enemy
                     if (!attacking)
                     {
                         animationManager.animationStat = AnimationState.Walking;
-                        MoveToTarget();
+                        traversal.Move(target.transform);
                     }
                     else
                     {
@@ -77,7 +77,7 @@ public class MeleeEnemy : Enemy
 
     protected void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.GetComponent<Atmosphere>() != null)
+        if (collision.gameObject.tag == "Planet")
         {
             grounded = true;
         }
@@ -94,7 +94,7 @@ public class MeleeEnemy : Enemy
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.GetComponent<Atmosphere>() != null)
+        if (collision.gameObject.tag == "Planet")
         {
             grounded = true;
         }

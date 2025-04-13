@@ -8,40 +8,55 @@ public class SphereTraversal : Traversal
 
 
     public GameObject planet;
-    public float speed;
+    public Rigidbody rb;
+  
 
 
-    public override void MoveToTarget(GameObject t_target, Rigidbody rb)
+    private void Start()
     {
-        UnityEngine.Vector3 moveDirection = getPlanetRelativeTargetDirection(t_target.transform);
+        rb = gameObject.GetComponent<Rigidbody>();
+       
+    }
 
-        moveDirection += seperationForce();
+    public override void Move(Transform target)
+    {
+        if (!target || !planet || !rb) return;
+
+        UnityEngine.Vector3 moveDirection = GetPlanetRelativeTargetDirection(target);
+        moveDirection += SeparationForce();
 
         UnityEngine.Vector3 move = moveDirection * speed * Time.fixedDeltaTime;
         rb.MovePosition(rb.position + move);
+
         UnityEngine.Vector3 directionFromCenter = (rb.position - planet.transform.position).normalized;
         rb.position = planet.transform.position + directionFromCenter * UnityEngine.Vector3.Distance(rb.position, planet.transform.position);
-        UnityEngine.Vector3 aimVector;
 
-        aimVector = t_target.transform.position - transform.position; //vector to player pos
-        aimVector = UnityEngine.Vector3.ProjectOnPlane(aimVector, transform.up); //project it on an x-z plane 
-        UnityEngine.Quaternion newEnemyRotation = UnityEngine.Quaternion.LookRotation(aimVector, transform.up);
-
-        transform.rotation = UnityEngine.Quaternion.Slerp(transform.rotation, newEnemyRotation, 10f * Time.deltaTime); //slowly transition
+        UnityEngine.Vector3 aimVector = target.position - rb.position;
+        aimVector = UnityEngine.Vector3.ProjectOnPlane(aimVector, transform.up);
+        UnityEngine.Quaternion newRot = UnityEngine.Quaternion.LookRotation(aimVector, transform.up);
+        transform.rotation = UnityEngine.Quaternion.Slerp(transform.rotation, newRot, 10f * Time.deltaTime);
     }
 
-
-    protected UnityEngine.Vector3 getPlanetRelativeTargetDirection(Transform target)
+    private UnityEngine.Vector3 GetPlanetRelativeTargetDirection(Transform target)
     {
         UnityEngine.Vector3 gravityDir = (transform.position - planet.transform.position).normalized;
-
-        UnityEngine.Vector3 targetDir = (target.transform.position - transform.position).normalized;
-
+        UnityEngine.Vector3 targetDir = (target.position - transform.position).normalized;
         UnityEngine.Vector3 planetRelativePos = UnityEngine.Vector3.ProjectOnPlane(targetDir, gravityDir).normalized;
+        return UnityEngine.Vector3.Cross(gravityDir, UnityEngine.Vector3.Cross(planetRelativePos, gravityDir)).normalized;
+    }
 
-        UnityEngine.Vector3 moveDirection = UnityEngine.Vector3.Cross(gravityDir, UnityEngine.Vector3.Cross(planetRelativePos, gravityDir)).normalized;
-
-        return moveDirection;
+    private UnityEngine.Vector3 SeparationForce()
+    {
+        UnityEngine.Vector3 separation = UnityEngine.Vector3.zero;
+        Collider[] nearby = Physics.OverlapSphere(transform.position, 1.5f);
+        foreach (Collider col in nearby)
+        {
+            if (col.CompareTag("Enemy") && col.gameObject != gameObject)
+            {
+                separation += (transform.position - col.transform.position).normalized;
+            }
+        }
+        return separation.normalized * 0.5f;
     }
 
 }

@@ -18,6 +18,6 @@ public class HeavyEnemy : MeleeEnemy
         KillGoldGain = goldGainOnDeath;
 
         animationManager.animator.SetFloat("SpeedMultiplier", maxSpeed * animationSpeedScaler);
-
+        traversal.speed = speed;
     }
 }
