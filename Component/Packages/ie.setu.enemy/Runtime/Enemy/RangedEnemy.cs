@@ -28,7 +28,7 @@ public class RangedEnemy : Enemy
                     if (!attacking)
                     {
                         animationManager.animationStat = AnimationState.Walking;
-                        MoveToTarget();
+                        //MoveToTarget();
                        //shootingRangeCheck();
                     }
                     else

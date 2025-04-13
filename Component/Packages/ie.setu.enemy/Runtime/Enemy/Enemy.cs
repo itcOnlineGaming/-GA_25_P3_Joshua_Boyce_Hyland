@@ -11,8 +11,10 @@ public class Enemy : MonoBehaviour
 {
 
     public float attackRange = 0.8f;
-    [HideInInspector] public int damage = 10;
-    [HideInInspector] public float speed = 1.25f;
+    public int damage = 10;
+    public float speed = 1.25f;
+    
+    public float animationSpeedScaler = 1f;
     public GameObject planet;
 
 
@@ -41,18 +43,17 @@ public class Enemy : MonoBehaviour
       
 
         capsuleCollider = animationManager.createColliderBasedOnModel();
-        
+
+        animationManager.animator.SetFloat("SpeedMultiplier", speed * animationSpeedScaler);
+        traversal.speed = speed;
+
     }
 
     private void Update()
     {
         if (health <= 0 && animationManager.animationStat != AnimationState.Dead)
         {
-            // need to find different way as this will cause enemies to fall through planet
-            //capsuleCollider.enabled = false;
-            //8
-            //GameManager.Instance.UpdateEnemyKilled();
-            //GameManager.Instance.UpdateCoinCount(KillGoldGain);
+      
             animationManager.animationStat = AnimationState.Dead;
 
         }
@@ -99,42 +100,7 @@ public class Enemy : MonoBehaviour
 
     }
 
-    protected void MoveToTarget()
-    {
 
-        Vector3 moveDirection = getPlanetRelativeTargetDirection(target.transform);
-
-        moveDirection += seperationForce();
-
-        Vector3 move = moveDirection * speed * Time.fixedDeltaTime;
-        rb.MovePosition(rb.position + move);
-
-        Vector3 directionFromCenter = (rb.position - planet.transform.position).normalized;
-        rb.position = planet.transform.position + directionFromCenter * Vector3.Distance(rb.position, planet.transform.position);
-
-        Vector3 aimVector;
-
-        aimVector = target.transform.position - transform.position; //vector to player pos
-        aimVector = Vector3.ProjectOnPlane(aimVector, transform.up); //project it on an x-z plane 
-        Quaternion newEnemyRotation = Quaternion.LookRotation(aimVector, transform.up);
-
-        transform.rotation = Quaternion.Slerp(transform.rotation, newEnemyRotation, 10f * Time.deltaTime); //slowly transition
-    }
-
-    protected Vector3 seperationForce()
-    {
-        Vector3 separation = Vector3.zero;
-        Collider[] nearbyEnemies = Physics.OverlapSphere(transform.position, 1.5f); 
-        foreach (Collider col in nearbyEnemies)
-        {
-            if (col.CompareTag("Enemy") && col.gameObject != this.gameObject)
-            {
-                separation += (transform.position - col.transform.position).normalized;
-            }
-        }
-
-        return separation.normalized * 0.5f;
-    }
 
     protected Vector3 getPlanetRelativeTargetDirection(Transform target)
     {
@@ -158,14 +124,6 @@ public class Enemy : MonoBehaviour
         attacking = false;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Projectile")
-        {
-            //8
-           //TakeDamage(other.GetComponent<Projectile>().damage);
-        }
-    }
 
 
    
