@@ -40,7 +40,7 @@ Here you can choose to create the enviorment the character will be walking on, w
 ### Plane enviorement set up:
 1. Add a nav mesh component to your chosen enviorement and bake it.
 2. Give the gameobject the tag "Surface"
-<img src="image/plane.png" width="600" alt="Demo GIF"/>
+<img src="image/plane.PNG" width="600" alt="Demo GIF"/>
 ## Enemy
 
 ### Scripts:
