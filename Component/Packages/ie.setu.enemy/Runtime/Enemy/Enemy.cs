@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
     public Traversal traversal;
 
     //public Animator animator;
-    public GameObject target;
+    [HideInInspector] public GameObject target;
 
 
     protected Rigidbody rb;

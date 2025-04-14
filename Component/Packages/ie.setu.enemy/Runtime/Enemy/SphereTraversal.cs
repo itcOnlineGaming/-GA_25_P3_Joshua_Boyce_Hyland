@@ -8,7 +8,7 @@ public class SphereTraversal : Traversal
 
 
     public GameObject planet;
-    public Rigidbody rb;
+    [HideInInspector] public Rigidbody rb;
   
 
 

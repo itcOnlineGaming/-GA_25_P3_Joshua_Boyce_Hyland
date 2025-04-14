@@ -41,7 +41,7 @@ Here you can choose to create the enviorment the character will be walking on, w
 1. Add a nav mesh component to your chosen enviorement and bake it.
 2. Give the gameobject the tag "Surface"
 <img src="image/plane.PNG" width="600" alt="Demo GIF"/>
-## Enemy
+
 
 ### Scripts:
 1. Create an empty Game object and attack a Enemy script to it <br>
@@ -49,7 +49,8 @@ Here you can choose to create the enviorment the character will be walking on, w
 3. Give the enemy gameobject an animation Manager <br>
 4. assign the enemys animation manager
 
-### Animation:
+## Animation:
+#### Setup: 
 1. Create a animation script which will implement an attack and a death function using the enemies relative functions<br>
 
 <pre> ```cshar public class AnimationScriptExample : MonoBehaviour
@@ -57,16 +58,21 @@ Here you can choose to create the enviorment the character will be walking on, w
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
 
-    public Enemy enemy;
+       public Enemy enemy;
 
 
     private void Start()
     {
         
-        AnimationScriptExample example = enemy.animationManager.instantiatedModel.AddComponent<AnimationScriptExample>();
+        AnimationScriptExample example = enemy.animationManager.instantiatedModel.GetComponent<AnimationScriptExample>();
 
-        example.enabled = true;
-        example.enemy = enemy;  
+        if( example == null )
+        {
+            example = enemy.animationManager.instantiatedModel.AddComponent<AnimationScriptExample>();
+            example.enabled = true;
+            example.enemy = enemy;
+        }
+        
     }
     void attack()
     {
@@ -77,14 +83,43 @@ Here you can choose to create the enviorment the character will be walking on, w
     void death()
     {
         Destroy(enemy.gameObject);
- }}``` </pre>
+    }}``` </pre>
 
-2. Assign these functions to animations events in your choosen animations  <br>
+2. Assign these functions to animations events in your choosen animations.  <br>
 <img src="gifs/animation.png" width="600" alt="Demo GIF"/>
 
-3. Make a copy of the default controller at "Packages/Enemey/Runtime/Animation/ Default Controller" assign the animations<br>
+3. Make a copy of the default controller at "Packages/Enemey/Runtime/Animation/ Default Controller" and assign the animations to the preset states<br>
 <img src="gifs/animationcontroller.png" width="600" alt="Demo GIF"/>
-8. Assign this controller to the animation manager and yoru character is fully animated .<br>
+8. Assign this controller to the animation manager and your character is fully animated .<br>
+
+#### Animation Parameters:
+<img src="image/animationParam.png" width="600" alt="Demo GIF"/>
+
+- **Model**: The model which will be used for the enemy.
+- **Capsule Offset**: Offsets the capsule on y axis if adjustment needs to be made.
+- **Controller**: Use copy of default_animation controller to use your own animations with your own custom 
+
+## Customization
+
+### Melee Enemy SetUp:
+
+1. Add the Melee Enemy Script to the same empty game object you assigned the Animation Manager to.
+2. Give the Melee Enemy Script reference to the animation manage.
+3. Attach you Animation event script to this empty object and give it reference to the enemy.
+4. Choose a means of traversal ( Sphere or Plane ) and attach the relevent script to the object and give it reference to the enemy and vice verse for the enemy script.<br>
+<img src="image/meleeEnemy.png" width="600" alt="Demo GIF"/>
+
+#### Melee Enemy Parameters.
+- **Attack Range:** Customize the attack range of the enemy, the distance an enemy will stop and attack enemies.
+
+- **Damage:** Attack damage of the enemy.
+- **Speed:** Movement speed of enemy.
+- **Health:** Health of enemy.
+- **Animation Speed Scaler** float which scales the speed of the animation relative to the **Speed**.
+
+
+
+
 
 ## Enemy Targetable
 
@@ -92,21 +127,3 @@ Here you can choose to create the enviorment the character will be walking on, w
 2. Set Health and whether the target is currently attackable.
 
 <img src="gifs/enemy_targetable.PNG" width="600" alt="Demo GIF"/>
-
-## Customization
-
-### Enemey Scripts:
-- **Attack Range:** Customize the attack range of the enemy, the distance an enemy will attack enemies.
-- **Max Damage:** Attack damage of the enemy.
-- **Max Speed:** Movement speed of enemy.
-- **Max Health:** Health of enemy.
-- **Animation Speed Scaler** float which scales the speed of the animation relative to the **Max Speed**.
-<img src="gifs/enemyScript.PNG" width="600" alt="Demo GIF"/>
-
-### Animation
-- **Model**: The model which will be used for the enemy.
-- **Capsule Offset**: Offsets the capsule on y axis if adjustment needs to be made.
-- **Controller**: Use copy of default_animation controller to use your own animations with your own custom events.
-<img src="gifs/animation_controller.PNG" width="600" alt="Demo GIF"/>
-
-
