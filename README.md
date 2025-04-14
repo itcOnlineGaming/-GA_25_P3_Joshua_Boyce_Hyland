@@ -1,7 +1,7 @@
 # Enemy System Guide
 
-Welcome to the **Enemy System Package** guide. This document will help you get set up and walk you through the various components of the system.
-
+Welcome to the **Enemy System Package** guide. This document will help you get set up and walk you through the various components of the system.<br><br>
+`find implemented in P2 at  https://github.com/itcOnlineGaming/Mole_Patrol/tree/enemy_component_use on the enemy_component_use branch`
 ---
 
 ## Table of Contents
@@ -188,7 +188,7 @@ public class ExampleEnemy : EnemyTargetable
 
 2. Attach the derived script to a GameObject.
 3. Set the variables to make the object targetable:
-   - Health
-   - Whether the target is currently attackable
+   - **Health**: Characters current health.
+   - **Attackable**: Whether the target is currently attackable.
 
 <img src="gifs/enemy_targetable.PNG" width="600" />
