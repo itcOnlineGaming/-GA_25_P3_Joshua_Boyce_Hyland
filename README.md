@@ -42,7 +42,7 @@ Choose the environment the character will walk on: either a **sphere** or a **pl
 3. Assign the enemy's planet reference (in editor or programmatically).
 4. Tag the GameObject as `"Surface"`.
 
-<img src="gifs/atmosphere.gif" width="600" alt="Demo GIF"/>
+<img src="gifs/atmosphere.gif" width="600" />
 
 ---
 
@@ -51,7 +51,7 @@ Choose the environment the character will walk on: either a **sphere** or a **pl
 1. Add a **NavMesh** component to your chosen environment and **bake** it.
 2. Tag the GameObject as `"Surface"`.
 
-<img src="image/plane.PNG" width="600" alt="Demo GIF"/>
+<img src="image/plane.PNG" width="600" />
 
 ---
 
@@ -92,13 +92,13 @@ public class AnimationScriptExample : MonoBehaviour
 
 2. Assign these functions to **animation events** in your chosen animations.
 
-<img src="gifs/animation.PNG" width="600" alt="Demo GIF"/>
+<img src="gifs/animation.PNG" width="600" />
 
 3. Make a copy of the default controller at:  
    `"Packages/Enemy/Runtime/Animation/Default Controller"`  
    Assign your animations to the preset states.
 
-<img src="gifs/animationcontroller.PNG" width="600" alt="Demo GIF"/>
+<img src="gifs/animationcontroller.PNG" width="600" />
 
 4. Assign this controller to the **Animation Manager**. Your character is now fully animated.
 
@@ -106,7 +106,7 @@ public class AnimationScriptExample : MonoBehaviour
 
 ### Animation Parameters
 
-<img src="image/animationParam.PNG" width="600" alt="Demo GIF"/>
+<img src="image/animationParam.PNG" width="600" />
 
 - **Model**: The model used for the enemy.
 - **Capsule Offset**: Adjust the capsule's Y-axis offset.
@@ -125,7 +125,7 @@ public class AnimationScriptExample : MonoBehaviour
 3. Attach your **Animation Event Script** to the object and link the **Enemy**.
 4. Choose traversal type (Sphere or Plane). Attach the relevant script to the object and link it both ways with the enemy script.
 
-<img src="image/meleeEnemy.PNG" width="600" alt="Demo GIF"/>
+<img src="image/meleeEnemy.PNG" width="600" />
 
 #### Melee Enemy Parameters
 
@@ -139,7 +139,7 @@ public class AnimationScriptExample : MonoBehaviour
 
 ### Ranged Enemy Setup
 
-<img src="image/ranged.PNG" width="600" alt="Demo GIF"/>
+<img src="image/ranged.PNG" width="600" />
 
 1. Repeat steps 1–4 from **Melee Enemy Setup**.
 2. Set a larger **attack range**, e.g. `5`, for ranged attacks.
@@ -154,7 +154,7 @@ public class AnimationScriptExample : MonoBehaviour
 2. Add a **collider** and **rigidbody**.
 3. Specify whether the projectile should launch with an **Arc** or **Straight**.
 
-<img src="image/arrow.PNG" width="600" alt="Demo GIF"/>
+<img src="image/arrow.PNG" width="600" />
 
 - **Projectile TYpe**: projectile Launches in an **Arc** or **Straight** line.
 - **Speed**: Speed of projectile.
@@ -169,4 +169,4 @@ public class AnimationScriptExample : MonoBehaviour
    - Health
    - Whether the target is currently attackable
 
-<img src="gifs/enemy_targetable.PNG" width="600" alt="Demo GIF"/>
+<img src="gifs/enemy_targetable.PNG" width="600" />
