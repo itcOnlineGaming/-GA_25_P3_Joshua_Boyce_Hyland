@@ -1,130 +1,172 @@
 # Enemy System Guide
 
-Here you will see how to use the Enemy system package
+Welcome to the **Enemy System Package** guide. This document will help you get set up and walk you through the various components of the system.
 
 ---
 
 ## Table of Contents
 1. [Set-Up](#set-up)
-2. [Enviorment](#enviorement)
-3. [Enemy](#enemy)
-4. [Enemy Targetable](#enemy-targetable)
-5. [Customization](#customization)
+2. [Environment](#environment)
+3. [Animation](#animation)
+4. [Enemies](#enemies)
+    - [Melee Enemy](#melee-enemy-setup)
+    - [Ranged Enemy](#ranged-enemy-setup)
+    - [Projectile](#projectile-setup)
+5. [Enemy Targetable](#enemy-targetable)
 
 
 ---
 
-## Set Up:
-You need to add this component to your Packages/manifest file
+## Set-Up
 
-    "ie.setu.enemy": "https://github.com/itcOnlineGaming/-GA_25_P3_Joshua_Boyce_Hyland.git?path=/Enemy/Packages/ie.setu.enemy"
+Add this component to your `Packages/manifest.json` file:
+
+```json
+"ie.setu.enemy": "https://github.com/itcOnlineGaming/-GA_25_P3_Joshua_Boyce_Hyland.git?path=/Enemy/Packages/ie.setu.enemy"
+```
 
 ---
 
-## Enviorment
+## Environment
 
-### Overview:
+### Overview
 
-Here you can choose to create the enviorment the character will be walking on, with a choice of a sphere or some sort of plane : .
+Choose the environment the character will walk on: either a **sphere** or a **plane**.
 
+---
 
-
-### Sphere enviorement set up:
+### Sphere Environment Setup
 
 1. Add the `Atmosphere` script to your sphere world.
-2. Adjust the radius to be bigger than the world.
-3. Assign the enemys planet reference upon creation either through editor or programatically
-4. Give the gameobject the tag "Surface"
+2. Adjust the radius to be **larger** than the world.
+3. Assign the enemy's planet reference (in editor or programmatically).
+4. Tag the GameObject as `"Surface"`.
+
 <img src="gifs/atmosphere.gif" width="600" alt="Demo GIF"/>
 
+---
 
-### Plane enviorement set up:
-1. Add a nav mesh component to your chosen enviorement and bake it.
-2. Give the gameobject the tag "Surface"
+### Plane Environment Setup
+
+1. Add a **NavMesh** component to your chosen environment and **bake** it.
+2. Tag the GameObject as `"Surface"`.
+
 <img src="image/plane.PNG" width="600" alt="Demo GIF"/>
 
+---
 
-### Scripts:
-1. Create an empty Game object and attack a Enemy script to it <br>
-2. Assign the Enemy the planet it will be traversing <br>
-3. Give the enemy gameobject an animation Manager <br>
-4. assign the enemys animation manager
+## Animation
 
-## Animation:
-#### Setup: 
-1. Create a animation script which will implement an attack and a death function using the enemies relative functions<br>
+### Setup
 
-<pre> ```cshar public class AnimationScriptExample : MonoBehaviour
+1. Create a custom animation script implementing **attack** and **death** functions using the enemy’s internal methods:
+
+```csharp
+public class AnimationScriptExample : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-
-
-       public Enemy enemy;
-
+    public Enemy enemy;
 
     private void Start()
     {
-        
         AnimationScriptExample example = enemy.animationManager.instantiatedModel.GetComponent<AnimationScriptExample>();
 
-        if( example == null )
+        if (example == null)
         {
             example = enemy.animationManager.instantiatedModel.AddComponent<AnimationScriptExample>();
             example.enabled = true;
             example.enemy = enemy;
         }
-        
     }
+
     void attack()
     {
         enemy.attackTarget();
     }
 
-
     void death()
     {
         Destroy(enemy.gameObject);
-    }}``` </pre>
+    }
+}
+```
 
-2. Assign these functions to animations events in your choosen animations.  <br>
-<img src="gifs/animation.png" width="600" alt="Demo GIF"/>
+2. Assign these functions to **animation events** in your chosen animations.
 
-3. Make a copy of the default controller at "Packages/Enemey/Runtime/Animation/ Default Controller" and assign the animations to the preset states<br>
-<img src="gifs/animationcontroller.png" width="600" alt="Demo GIF"/>
-8. Assign this controller to the animation manager and your character is fully animated .<br>
+<img src="gifs/animation.PNG" width="600" alt="Demo GIF"/>
 
-#### Animation Parameters:
-<img src="image/animationParam.png" width="600" alt="Demo GIF"/>
+3. Make a copy of the default controller at:  
+   `"Packages/Enemy/Runtime/Animation/Default Controller"`  
+   Assign your animations to the preset states.
 
-- **Model**: The model which will be used for the enemy.
-- **Capsule Offset**: Offsets the capsule on y axis if adjustment needs to be made.
-- **Controller**: Use copy of default_animation controller to use your own animations with your own custom 
+<img src="gifs/animationcontroller.PNG" width="600" alt="Demo GIF"/>
 
-## Customization
+4. Assign this controller to the **Animation Manager**. Your character is now fully animated.
 
-### Melee Enemy SetUp:
+---
 
-1. Add the Melee Enemy Script to the same empty game object you assigned the Animation Manager to.
-2. Give the Melee Enemy Script reference to the animation manage.
-3. Attach you Animation event script to this empty object and give it reference to the enemy.
-4. Choose a means of traversal ( Sphere or Plane ) and attach the relevent script to the object and give it reference to the enemy and vice verse for the enemy script.<br>
-<img src="image/meleeEnemy.png" width="600" alt="Demo GIF"/>
+### Animation Parameters
 
-#### Melee Enemy Parameters.
-- **Attack Range:** Customize the attack range of the enemy, the distance an enemy will stop and attack enemies.
+<img src="image/animationParam.PNG" width="600" alt="Demo GIF"/>
 
-- **Damage:** Attack damage of the enemy.
-- **Speed:** Movement speed of enemy.
-- **Health:** Health of enemy.
-- **Animation Speed Scaler** float which scales the speed of the animation relative to the **Speed**.
+- **Model**: The model used for the enemy.
+- **Capsule Offset**: Adjust the capsule's Y-axis offset.
+- **Controller**: Use a copy of `default_animation` to plug in your own animations.
 
+---
 
+## Enemies
 
+---
 
+### Melee Enemy Setup
+
+1. Add the `MeleeEnemy` script to an empty GameObject with an assigned **Animation Manager**.
+2. Reference the Animation Manager in the script.
+3. Attach your **Animation Event Script** to the object and link the **Enemy**.
+4. Choose traversal type (Sphere or Plane). Attach the relevant script to the object and link it both ways with the enemy script.
+
+<img src="image/meleeEnemy.PNG" width="600" alt="Demo GIF"/>
+
+#### Melee Enemy Parameters
+
+- **Attack Range**: Distance to stop and attack.
+- **Damage**: Attack damage.
+- **Speed**: Movement speed.
+- **Health**: Enemy health.
+- **Animation Speed Scaler**: Float scaling animation speed based on movement speed.
+
+---
+
+### Ranged Enemy Setup
+
+<img src="image/ranged.PNG" width="600" alt="Demo GIF"/>
+
+1. Repeat steps 1–4 from **Melee Enemy Setup**.
+2. Set a larger **attack range**, e.g. `5`, for ranged attacks.
+3. Add an empty GameObject to your model named `ShootingPoint`—this is the projectile spawn location.
+4. Assign your projectile GameObject to the **Projectile** field.
+
+---
+
+### Projectile Setup
+
+1. Assign the `Projectile` script to your projectile model.
+2. Add a **collider** and **rigidbody**.
+3. Specify whether the projectile should launch with an **Arc** or **Straight**.
+
+<img src="image/arrow.PNG" width="600" alt="Demo GIF"/>
+
+- **Projectile TYpe**: projectile Launches in an **Arc** or **Straight** line.
+- **Speed**: Speed of projectile.
+- **Arc Height**: Max Height of the **Arc**.
+- **Damage**: Damage done to **EnemyTargetable** gameobjects .
+---
 
 ## Enemy Targetable
 
-1. Attach Script and set variable to make the object targetable by the enemy.
-2. Set Health and whether the target is currently attackable.
+1. Attach the `EnemyTargetable` script to a GameObject.
+2. Set the variables to make the object targetable:
+   - Health
+   - Whether the target is currently attackable
 
 <img src="gifs/enemy_targetable.PNG" width="600" alt="Demo GIF"/>
