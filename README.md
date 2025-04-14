@@ -163,9 +163,31 @@ public class AnimationScriptExample : MonoBehaviour
 ---
 
 ## Enemy Targetable
+1. Create a derived class from `EnemyTargetable` that looks like the below:
+   
+```csharp
+public class ExampleEnemy : EnemyTargetable
+{
 
-1. Attach the `EnemyTargetable` script to a GameObject.
-2. Set the variables to make the object targetable:
+    
+
+    public override void TakeDamage(float t_damage)
+    {
+        health -= t_damage; ;
+    }
+
+    private void Update()
+    {
+        if( health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+}
+```
+
+2. Attach the derived script to a GameObject.
+3. Set the variables to make the object targetable:
    - Health
    - Whether the target is currently attackable
 
