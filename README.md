@@ -92,13 +92,13 @@ public class AnimationScriptExample : MonoBehaviour
 
 2. Assign these functions to **animation events** in your chosen animations.
 
-<img src="gifs/animation.PNG" width="600" />
+<img src="gifs/animation.png" width="600" />
 
 3. Make a copy of the default controller at:  
    `"Packages/Enemy/Runtime/Animation/Default Controller"`  
    Assign your animations to the preset states.
 
-<img src="gifs/animationcontroller.PNG" width="600" />
+<img src="gifs/animationcontroller.png" width="600" />
 
 4. Assign this controller to the **Animation Manager**. Your character is now fully animated.
 
