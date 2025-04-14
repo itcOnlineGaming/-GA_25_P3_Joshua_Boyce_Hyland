@@ -77,7 +77,7 @@ public class MeleeEnemy : Enemy
 
     protected void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Surface")
+        if (collision.gameObject.tag == surfaceTag)
         {
             grounded = true;
         }

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class RangedEnemy : Enemy
 {
+    
     public string shootingPointGbName = "ShootingPoint";
     public GameObject projectile;
     [HideInInspector] public GameObject shootingPoint;
@@ -101,7 +102,7 @@ public class RangedEnemy : Enemy
 
     protected void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Surface")
+        if (collision.gameObject.tag == surfaceTag)
         {
             grounded = true;
         }

@@ -9,7 +9,7 @@ using UnityEngine.Analytics;
 // Placeholder Enemy Class
 public class Enemy : MonoBehaviour
 {
-
+    public string surfaceTag = "Surface";
     public float attackingRange = 0.8f;
     public int damage = 10;
     public float speed = 1.25f;
