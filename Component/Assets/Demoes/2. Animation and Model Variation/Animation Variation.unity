@@ -2380,7 +2380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  enemy: {fileID: 0}
+  enemy: {fileID: 1780270466}
   planet: {fileID: 1183619285}
   rb: {fileID: 0}
 --- !u!114 &1780270466
