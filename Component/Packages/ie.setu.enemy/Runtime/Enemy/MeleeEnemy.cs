@@ -63,7 +63,7 @@ public class MeleeEnemy : Enemy
 
         // Get character and target bounds
         float characterSize = gameObject.GetComponentInChildren<Renderer>().bounds.extents.magnitude;
-        float targetSize = target.GetComponent<Renderer>().bounds.extents.magnitude;
+        float targetSize = target.GetComponentInChildren<Renderer>().bounds.extents.magnitude;
 
         // Calculate dynamic attack range
         float attackRange = (characterSize + targetSize) * attackingRange;
