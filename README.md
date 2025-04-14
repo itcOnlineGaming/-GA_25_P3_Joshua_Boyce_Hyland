@@ -32,10 +32,11 @@ Here you can choose to create the enviorment the character will be walking on, w
 ### Sphere enviorement set up:
 
 1. Add the `Atmosphere` script to your sphere world.
-2. Adjust the radius to be bigger than the world. <br>
-<img src="gifs/atmosphere.gif" width="600" alt="Demo GIF"/>
+2. Adjust the radius to be bigger than the world.
 3. Assign the enemys planet reference upon creation either through editor or programatically
 4. Give the gameobject the tag "Surface"
+<img src="gifs/atmosphere.gif" width="600" alt="Demo GIF"/>
+
 
 ### Plane enviorement set up:
 1. Add a nav mesh component to your chosen enviorement and bake it.
