@@ -349,10 +349,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23552aa2419ef534297baf8510e044a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  surfaceTag: Surface
   attackingRange: 4
   damage: 10
-  speed: 1.25
-  animationSpeedScaler: 1
+  speed: 5
+  animationSpeedScaler: 0.25
   planet: {fileID: 0}
   traversal: {fileID: 354501105}
   target: {fileID: 0}
@@ -1001,6 +1002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3106e9d7caae52846b4d4f5d3d3c897c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  surfaceTag: Surface
   attackingRange: 0.8
   damage: 10
   speed: 1.25
@@ -1278,6 +1280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23552aa2419ef534297baf8510e044a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  surfaceTag: Surface
   attackingRange: 10
   damage: 10
   speed: 3
@@ -1399,6 +1402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23552aa2419ef534297baf8510e044a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  surfaceTag: Surface
   attackingRange: 4
   damage: 10
   speed: 4
@@ -1506,6 +1510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23552aa2419ef534297baf8510e044a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  surfaceTag: Surface
   attackingRange: 5
   damage: 10
   speed: 3
@@ -1765,6 +1770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23552aa2419ef534297baf8510e044a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  surfaceTag: Surface
   attackingRange: 10
   damage: 10
   speed: 3
@@ -2168,6 +2174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3106e9d7caae52846b4d4f5d3d3c897c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  surfaceTag: Surface
   attackingRange: 0.8
   damage: 10
   speed: 5
@@ -2395,6 +2402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3106e9d7caae52846b4d4f5d3d3c897c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  surfaceTag: Surface
   attackingRange: 0.8
   damage: 10
   speed: 4
@@ -2483,6 +2491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3106e9d7caae52846b4d4f5d3d3c897c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  surfaceTag: Surface
   attackingRange: 0.8
   damage: 10
   speed: 5
@@ -2753,6 +2762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23552aa2419ef534297baf8510e044a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  surfaceTag: Surface
   attackingRange: 5
   damage: 10
   speed: 3
