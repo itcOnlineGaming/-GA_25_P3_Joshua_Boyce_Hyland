@@ -83,6 +83,8 @@ public class Atmosphere : MonoBehaviour
 
     void applyGravity(GameObject body)
     {
+        if (body.GetComponent<Rigidbody>() == null) { return; }
+
         Vector3 gravityUp = (body.transform.position - transform.position).normalized;
 
         body.GetComponent<Rigidbody>().AddForce(gravityUp * gravity); //apply gravity atop player
