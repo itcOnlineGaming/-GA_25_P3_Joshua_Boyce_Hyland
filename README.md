@@ -40,7 +40,6 @@ Choose the environment the character will walk on: either a **sphere** or a **pl
 1. Add the `Atmosphere` script to your sphere world.
 2. Adjust the radius to be **larger** than the world.
 3. Assign the enemy's planet reference (in editor or programmatically).
-4. Tag the GameObject as `"Surface"`.
 
 <img src="gifs/atmosphere.gif" width="600" />
 
@@ -124,11 +123,12 @@ public class AnimationScriptExample : MonoBehaviour
 2. Reference the Animation Manager in the script.
 3. Attach your **Animation Event Script** to the object and link the **Enemy**.
 4. Choose traversal type (Sphere or Plane). Attach the relevant script to the object and link it both ways with the enemy script.
+5. Assign a surface tag, this is just to detect what the floor is, so if your surfaces dot have a tag assign one.
 
 <img src="image/meleeEnemy.PNG" width="600" />
 
 #### Melee Enemy Parameters
-
+- **Surface Tag**: Tag name of your surface being traversed.
 - **Attack Range**: Distance to stop and attack.
 - **Damage**: Attack damage.
 - **Speed**: Movement speed.
@@ -141,7 +141,7 @@ public class AnimationScriptExample : MonoBehaviour
 
 <img src="image/ranged.PNG" width="600" />
 
-1. Repeat steps 1–4 from **Melee Enemy Setup**.
+1. Repeat steps 1–5 from **Melee Enemy Setup**.
 2. Set a larger **attack range**, e.g. `5`, for ranged attacks.
 3. Add an empty GameObject to your model named `ShootingPoint`—this is the projectile spawn location.
 4. Assign your projectile GameObject to the **Projectile** field.
@@ -156,7 +156,8 @@ public class AnimationScriptExample : MonoBehaviour
 
 <img src="image/arrow.PNG" width="600" />
 
-- **Projectile TYpe**: projectile Launches in an **Arc** or **Straight** line.
+
+- **Projectile Type**: projectile Launches in an **Arc** or **Straight** line.
 - **Speed**: Speed of projectile.
 - **Arc Height**: Max Height of the **Arc**.
 - **Damage**: Damage done to **EnemyTargetable** gameobjects .
